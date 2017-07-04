@@ -1,5 +1,4 @@
-﻿
-namespace Raven.Extensions
+﻿namespace Raven.Extensions
 {
     /// <summary>
     /// 
