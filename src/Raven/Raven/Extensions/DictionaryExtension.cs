@@ -29,7 +29,7 @@ namespace Raven.Extensions
         /// <returns></returns>
         public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key)
         {
-            TValue value = default(TValue);
+            TValue value;
             if (dict.TryGetValue(key, out value))
             {
                 return value;
@@ -39,6 +39,31 @@ namespace Raven.Extensions
                 return default(TValue);
             }
         }
+
+        /// <summary>
+        /// 根据键集合返回字典所包含的值集合
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="dict"></param>
+        /// <param name="keys"></param>
+        /// <returns>值数组</returns>
+        public static TValue[] GetValues<TKey, TValue>(this IDictionary<TKey, TValue> dict, IEnumerable<TKey> keys)
+        {
+            if (keys == null)
+                return null;
+            List<TValue> values = new List<TValue>();
+            TValue value;
+            foreach (var k in keys)
+            {
+                if (dict.TryGetValue(k, out value))
+                {
+                    values.Add(value);
+                }
+            }
+            return values.ToArray();
+        }
+
 
     }
 }

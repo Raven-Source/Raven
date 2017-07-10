@@ -9,7 +9,7 @@ namespace Raven.Util
     {
         public readonly static char[] array = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-', '_' };
 
-        #region 64位
+        #region 64位转换
 
         /// <summary>
         /// long转64进制
@@ -73,6 +73,34 @@ namespace Raven.Util
                 }
             }
             return result;
+        }
+
+        #endregion
+
+        #region 16进制转换
+
+
+
+        #endregion
+
+        #region GUID
+
+        /// <summary>
+        /// 取得32位的GUID
+        /// </summary>
+        /// <returns></returns>
+        public static string GetGuid32()
+        {
+            return System.Guid.NewGuid().ToString("N");
+        }
+
+        /// <summary>
+        /// 取得16位的GUID
+        /// </summary>
+        /// <returns></returns>
+        public static string GetGuid16()
+        {
+            return System.Guid.NewGuid().ToString("N").Substring(8, 16);
         }
 
         #endregion
